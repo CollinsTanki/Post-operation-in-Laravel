@@ -21,9 +21,21 @@
         @foreach ($posts as $post)
             <div class="mb-4 ">
             <a href="" class="font-bold p-2">{{$post->user->name}}</a><span class="text-gray-600 text-sm">{{$post->created_at->diffForHumans()}}</span>
-            <p class="mb-2">{{$post->body}}</p>               
-                </div>
+            <p class="mb-2">{{$post->body}}</p>
+
+            <div class="flex items-center">
+            <form action="" method="post" class="mr-1">
+            @csrf
+            <button type="submit" class="text-blue-500">Like</button>
+            </form>   
+            <form action="" method="post" class="mr-1">
+            @csrf
+            <button type="submit" class="text-blue-500">Unlike</button>
+            </form>  
+            </div>         
+          </div>
         @endforeach
+        {{$posts->links()}}
 
     @else
     <p>There are no posts</p>
